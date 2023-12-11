@@ -6,7 +6,7 @@ Para ejecutar este script solo es necesario crear un ambiente virtual en python:
 ==========================================
 python3 -m venv .venv_eventos_wh  
 source .venv_eventos_wh/bin/activate
-pip install --upgrade pip                                                                          
+pip install --upgrade pip
 pip install -r  requeriments.pip
 
 ** Ejecución
