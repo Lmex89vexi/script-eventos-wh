@@ -1,10 +1,10 @@
 import requests
 from loguru import logger
 from datetime import datetime
-import os 
+import os
 
 # ===================== servicios APISOL-INTERNO =====================
-APISOL_INTERNO = os.getenv("APISOL_INTERNO","http://localhost:44365" )
+APISOL_INTERNO = os.getenv("APISOL_INTERNO", "http://localhost:44365")
 URL_QUERY_EVENTOS_BY_DATE = "/v1/solicitud/webhook/status/{}/"
 URL_EXEC_EVENTO_FASE_WH = "/v1/solicitud/{}/webhook/{}/"
 # ===================== servicios APISOL-INTERNO =====================
@@ -65,24 +65,25 @@ def main(date_start, date_end, status: int):
     if not eventos_wh:
         return
 
-    logger.info(
-        f"---Total de eventos a completar {len(eventos_wh.get('data'))} --- "
-    )
+    logger.info(f"---Total de eventos a completar {len(eventos_wh.get('data'))} --- ")
 
     for evento in eventos_wh.get("data"):
         id_solicitud = evento.get("id_solicitud")
         id_evento = evento.get("id_evento")
+        id_fase = evento.get(
+            "id_fase",
+        )
 
         try:
             response = api_server_get_request(
-                url=APISOL_INTERNO + URL_EXEC_EVENTO_FASE_WH.format(id_solicitud, id_evento)
+                url=APISOL_INTERNO + URL_EXEC_EVENTO_FASE_WH.format(id_solicitud, id_fase)
             )
             logger.info(
-                f" --- id_solicitud {id_solicitud} id_evento {id_evento}  ----- response {response}"
+                f" --- id_solicitud {id_solicitud} id_evento {id_evento} id_fase {id_fase} ----- response {response}"
             )
         except Exception as exc:
             logger.error(
-                f" ---Error en mandar evento wh id_solicitud {id_solicitud} evento: {id_evento}   {exc}"
+                f" ---Error en mandar evento wh id_solicitud {id_solicitud} evento: {id_evento} id_fase {id_fase}   {exc}"
             )
 
 
