@@ -3,6 +3,8 @@ from loguru import logger
 from datetime import datetime
 import os
 
+from api_server_request import api_server_get_request
+
 # ===================== servicios APISOL-INTERNO =====================
 APISOL_INTERNO = os.getenv("APISOL_INTERNO", "http://localhost:44365")
 URL_QUERY_EVENTOS_BY_DATE = "/v1/solicitud/webhook/status/{}/"
@@ -21,35 +23,6 @@ APPLICATION_JSON = "application/json"
 DATE_FORMAT = "%Y-%m-%d %H:%M:%S"
 # ===================== CONSTANTES ===============================
 
-
-def api_server_get_request(url: str, params=None):
-    """This API server_get_request is called for ApisolInterno only if need it
-    you need to create a new one, does not throw Exception when EntityNotFound
-
-    Args:
-        url (str): url para hacer get
-        params (_type_, optional): . Defaults to None.
-
-    Raises:
-        ValueError: Raise Exception if different from 422
-
-    Returns:
-        _type_: response if success
-    """
-
-    head = {"Content-Type": APPLICATION_JSON}
-    request = requests.Request("GET", url, headers=head, params=params)
-    prepped = HTTP_SESSION.prepare_request(request)
-    response = HTTP_SESSION.send(prepped)
-    logger.debug(f"-----url {url} --- params {params} Response :{response}")
-    if response.status_code in [200, 201]:
-        return response.json()
-    elif response.status_code == 422:
-        logger.debug(f"422 Unprocessable Entity *** Response :{response}")
-        return None
-    else:
-        logger.error(f"Error conexion a APISol-Interno Response :{response}")
-        return None
 
 
 def main(date_start, date_end, status: int):
