@@ -4,7 +4,7 @@ from datetime import datetime
 import os 
 
 # ===================== servicios APISOL-INTERNO =====================
-APISOL_INTERNO = os.get_env("APISOL_INTERNO")
+APISOL_INTERNO = os.getenv("APISOL_INTERNO")
 URL_QUERY_EVENTOS_BY_DATE = "/v1/solicitud/webhook/status/{}/"
 URL_EXEC_EVENTO_FASE_WH = "/v1/solicitud/{}/webhook/{}/"
 # ===================== servicios APISOL-INTERNO =====================
