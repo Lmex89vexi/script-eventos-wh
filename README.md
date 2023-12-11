@@ -11,4 +11,5 @@ pip install -r  requeriments.pip
 
 ** Ejecución
 ============================================
+Remplazar APISOL_INTERNO
 python3 main.py
