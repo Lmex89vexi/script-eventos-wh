@@ -1,3 +1,12 @@
+import requests
+from loguru import logger
+
+# ===================== CONSTANTES ===============================
+HTTP_SESSION = requests.Session()
+APPLICATION_JSON = "application/json"
+# ===================== CONSTANTES ===============================
+
+
 
 def api_server_get_request(url: str, params=None):
     """This API server_get_request is called for ApisolInterno only if need it

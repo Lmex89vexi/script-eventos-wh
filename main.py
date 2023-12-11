@@ -18,8 +18,7 @@ STATUS_FAILED = -1
 # ===================== PARAMS TO main ===============================
 
 # ===================== CONSTANTES ===============================
-HTTP_SESSION = requests.Session()
-APPLICATION_JSON = "application/json"
+
 DATE_FORMAT = "%Y-%m-%d %H:%M:%S"
 # ===================== CONSTANTES ===============================
 
