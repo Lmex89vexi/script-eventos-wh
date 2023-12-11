@@ -10,8 +10,8 @@ URL_EXEC_EVENTO_FASE_WH = "/v1/solicitud/{}/webhook/{}/"
 # ===================== servicios APISOL-INTERNO =====================
 
 # ===================== PARAMS TO main ===============================
-DATE_START = "2023-11-07 13:55:11"
-DATE_END = "2023-12-11 13:55:29"
+DATE_START = "2023-12-07 20:00:00"
+DATE_END = "2023-12-11 12:00:29"
 STATUS_FAILED = -1
 # ===================== PARAMS TO main ===============================
 
