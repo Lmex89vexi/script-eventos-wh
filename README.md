@@ -1,4 +1,4 @@
-Scrip para Ejecutar eventos Fallidos de Webhook en Solicitud 
+Script para Ejecutar eventos Fallidos de Webhook en Solicitud 
 
 Para ejecutar este script solo es necesario crear un ambiente virtual en python:
 
